@@ -1,8 +1,32 @@
+<<<<<<< HEAD
+# Visual C++ cache files
+ipch/
+*.aps
+*.ncb
+*.opendb
+*.opensdf
+*.sdf
+*.cachefile
+*.VC.db
+*.VC.VC.opendb
+
+# Visual Studio profiler
+*.psess
+*.vsp
+*.vspx
+*.sap
+
+#...
+=======
 ﻿################################################################################
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
 /Homework_1-2/.vs/Homework_1-2/v16/Browse.VC.opendb
+<<<<<<< HEAD
+>>>>>>> 99fc77fb5629b1bace673c9d44d17cbd41568a44
+=======
 /Homework_1-2/.vs/Homework_1-2/v16/Browse.VC.db
 *.db-shm
 *.db-wal
+>>>>>>> ee36d0f46699a65325e436e4ffa6e3817056d0a1
