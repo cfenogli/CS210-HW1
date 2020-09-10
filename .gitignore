@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Visual C++ cache files
 ipch/
 *.aps
@@ -16,3 +17,10 @@ ipch/
 *.sap
 
 #...
+=======
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/Homework_1-2/.vs/Homework_1-2/v16/Browse.VC.opendb
+>>>>>>> 99fc77fb5629b1bace673c9d44d17cbd41568a44
