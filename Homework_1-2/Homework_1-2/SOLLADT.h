@@ -1,18 +1,21 @@
 #pragma once
 #include <string>
+#include "SOLLNode.h"
 
+template <class T>
 class SOLLADT
 {
-private:
-	void search();
-	void search_mtf();
-	void search_t();
-	bool insert();
-	std::string showSOLL();
-};
+public:
+	SOLLADT();
 
-struct Node
-{
-	Node* next;
-	dataType data;
+	~SOLLADT();
+
+	void search(T);
+	void search_mtf(T);
+	void search_t(T);
+	bool insert(T);
+	std::string showSOLL();
+
+private:
+	SOLLNode<T>* head;
 };
