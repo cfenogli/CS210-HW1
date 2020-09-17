@@ -1,3 +1,8 @@
+//Homework 1
+//CS 210
+//SOLLADT.cpp
+//Generalized ADT for self-organizing linked list
+
 #pragma once
 #include <string>
 #include "SOLLNode.h"
@@ -10,12 +15,12 @@ public:
 
 	~SOLLADT();
 
-	void search(T);
-	void search_mtf(T);
-	void search_t(T);
+	SOLLNode<T>* search(T);
+	bool search_mtf(T);
+	bool search_t(T);
 	bool insert(T);
-	std::string showSOLL();
+	void showSOLL();
 
-private:
+protected:
 	SOLLNode<T>* head;
 };
