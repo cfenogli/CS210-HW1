@@ -1,5 +1,6 @@
 #include <vector>
 #include <iostream>
+
 #define INF 999
 
 using namespace std;
@@ -12,17 +13,31 @@ using namespace std;
  **************************************************** 
 */
 
-void print(vector<vector<int>> dist); 
+struct Solution {
+    vector<vector<int> > P;
+    vector<vector<int> > D;
+    vector<vector<int> > s_paths;
+};
+
+void print(vector <vector<int> > dist); 
 
 
-void floyd_warshall (vector<vector<int>> graph)  
+Solution floyd_warshall (vector<vector<int> > graph)  
 {
+    Solution floyds_solution;
+    
     // Initialize vectors to size 0 
-    vector<vector<int>> dist( graph.size() , vector<int> (graph[0].size(), 0));
-    vector<vector<int>> path( graph.size() , vector<int> (graph[0].size(), 0));
+    vector<vector<int> > dist( graph.size() , vector<int> (graph[0].size(), 0));
+    vector<vector<int> > path( graph.size() , vector<int> (graph[0].size(), 0));
+
+    floyds_solution.D = dist;
+    floyds_solution.P = path;
+    floyds_solution.s_paths = path;
+
+    return floyds_solution;
 }
 
-void print(vector<vector<int>> dist)  
+void print(vector< vector<int> > dist)  
 {  
 
     for (int i = 0; i < dist.size(); i++)  
@@ -31,11 +46,11 @@ void print(vector<vector<int>> dist)
         {  
             if (dist[i][j] == INF) {
 
-                cout<<"INF"<<"     ";  
+                cout<<"INF"<<" ";  
             }
             else
             {
-                cout<<dist[i][j]<<"     ";  
+                cout<<dist[i][j]<<" ";  
             }
         }  
         cout<<endl;  
@@ -45,6 +60,11 @@ void print(vector<vector<int>> dist)
 int main () 
 {
 
-    
+    vector< vector<int> > dist( 10 , vector<int> (10, 0));
+
+    print(floyd_warshall(dist).D);
+    print(floyd_warshall(dist).P);
+    print(floyd_warshall(dist).s_paths);
+
     return 0;
 }
