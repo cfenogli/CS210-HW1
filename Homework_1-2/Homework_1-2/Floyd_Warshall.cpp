@@ -30,10 +30,31 @@ Solution floyd_warshall (vector<vector<int> > graph)
     vector<vector<int> > dist( graph.size() , vector<int> (graph[0].size(), 0));
     vector<vector<int> > path( graph.size() , vector<int> (graph[0].size(), 0));
 
+    for (int i = 0; i < graph.size(); i++)  
+        for (int j = 0; j < graph[i].size(); j++)  
+            dist[i][j] = graph[i][j]; 
+
+
+    for (int k = 0; k < dist.size(); k++)  
+    {  
+        // Pick all vertices as source one by one  
+        for (int i = 0; i < dist.size(); i++)  
+        {  
+            // Pick all vertices as destination for the  
+            // above picked source
+            for (int j = 0; j < dist.size(); j++)  
+            {  
+                // If vertex k is on the shortest path from  
+                // i to j, then update the value of dist[i][j]  
+                if (dist[i][k] + dist[k][j] < dist[i][j])  
+                    dist[i][j] = dist[i][k] + dist[k][j];
+            }  
+        }  
+    }  
+
     floyds_solution.D = dist;
     floyds_solution.P = path;
     floyds_solution.s_paths = path;
-
     return floyds_solution;
 }
 
@@ -60,11 +81,25 @@ void print(vector< vector<int> > dist)
 int main () 
 {
 
-    vector< vector<int> > dist( 10 , vector<int> (10, 0));
+    Solution soln1;
+    Solution soln2;
 
-    print(floyd_warshall(dist).D);
-    print(floyd_warshall(dist).P);
-    print(floyd_warshall(dist).s_paths);
+    vector<vector<int> > graph1 = { {0,1,INF,1,5},
+                                    {9,0,3,2,INF},
+                                    {INF,INF,0,4,INF},
+                                    {INF,INF,2,0,3},
+                                    {3,INF,INF,INF,0}};
+
+    vector<vector<int> > graph2 = { {0,4,5},
+                                    {2,0,INF},
+                                    {INF,-3,0}};
+
+
+    soln1 = floyd_warshall(graph1);
+    soln2 = floyd_warshall(graph2);
+
+    print(soln1.D);
+    print(soln2.D);
 
     return 0;
 }
