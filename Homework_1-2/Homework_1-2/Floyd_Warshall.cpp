@@ -4,14 +4,6 @@
 #define INF 999
 
 using namespace std;
-/*
- ****************************************************
-*    Call this one vectorception                     *
-*    Ford-Warshall?                                  *
-*    Bellman-Floyd?                                  *
-*    How both these algo's gonna have two creators?  *
- **************************************************** 
-*/
 
 struct Solution {
     vector<vector<int> > P;
