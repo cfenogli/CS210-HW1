@@ -13,6 +13,19 @@ struct Solution {
 
 void print(vector <vector<int> > dist); 
 
+void print_spaths(Solution soln, int v_q, int v_r)
+{
+    if (soln.P[v_q][v_r] != 0)
+    {
+        cout << "start vertex v" << v_q << " ->";
+        print_spaths(soln,v_q,soln.P[v_q][v_r]);
+        cout << "v" << soln.P[v_q][v_r] << " -> ";
+        print_spaths(soln,soln.P[v_q][v_r],v_r);
+        cout << "end vertex v" << v_r;
+    }
+
+}
+
 
 Solution floyd_warshall (vector<vector<int> > graph)  
 {
@@ -39,7 +52,10 @@ Solution floyd_warshall (vector<vector<int> > graph)
                 // If vertex k is on the shortest path from  
                 // i to j, then update the value of dist[i][j]  
                 if (dist[i][k] + dist[k][j] < dist[i][j])  
+                {
                     dist[i][j] = dist[i][k] + dist[k][j];
+                    path[i][j] = k;
+                }
             }  
         }  
     }  
@@ -84,14 +100,41 @@ int main ()
 
     vector<vector<int> > graph2 = { {0,4,5},
                                     {2,0,INF},
-                                    {INF,-3,0}};
+                                    {INF,-2,0}};
 
 
     soln1 = floyd_warshall(graph1);
     soln2 = floyd_warshall(graph2);
 
     print(soln1.D);
+    cout << "\n";
+    print(soln1.P);
+    cout << "\n";
+
+
+    for (int i = 0; i < soln1.P.size(); i++)
+    {
+        for (int j = 0; j < soln1.P[i].size(); j++)
+        {
+            print_spaths(soln1, i, j);
+            cout << "\n";
+        }
+    }
+
+
     print(soln2.D);
+    cout << "\n";
+    print(soln2.P);
+    cout << "\n";
+
+        for (int i = 0; i < soln2.P.size(); i++)
+    {
+        for (int j = 0; j < soln2.P[i].size(); j++)
+        {
+            print_spaths(soln2, i, j);
+            cout << "\n";
+        }
+    }
 
     return 0;
 }
